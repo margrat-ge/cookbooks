@@ -251,13 +251,6 @@ Install VS Code on Windows, add two helpful extensions, and connect it to WSL.
 
   ![The green/blue "WSL: Ubuntu" box in the bottom-left corner of VS Code](images/vscode-wsl-badge.png)
 
-  > 📸 **How to add this screenshot:** The image above will appear once you save a
-  > real screenshot at `images/vscode-wsl-badge.png` (relative to this guide). To
-  > capture it: with VS Code open and connected to WSL, press `Windows + Shift + S`,
-  > drag a box around the **bottom-left green badge**, then paste and save the image
-  > to that path. Until then, the badge looks like a small green rectangle reading
-  > `>< WSL: Ubuntu`.
-
 - To confirm Pylance works, create a test file:
   1. In VS Code, create a new file called `test.py`.
   2. Type `import os` and then on a new line type `os.` — a pop-up list of
