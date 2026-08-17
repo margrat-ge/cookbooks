@@ -164,32 +164,40 @@ which securely remembers it for you.
 
 ## 5. Install Git
 
-Git is the tool that actually runs every command in the next section. On
-**WSL / Ubuntu / Debian**, install (or update) it with:
+Git is the tool that actually runs every command in the next section.
 
-```bash
-sudo apt update && sudo apt install git -y
-```
+### First, check if you already have it
 
-> 💡 Ubuntu on WSL sometimes comes with Git already — but it can be an outdated
-> version, so running this ensures you have it and it's current. If asked for your
-> password, type your Linux login password (nothing appears as you type).
->
-> *(On Windows outside WSL, download the installer from
-> [git-scm.com/downloads](https://git-scm.com/downloads) instead. On macOS, run
-> `brew install git`.)*
-
-Confirm it's installed:
+Many WSL / Ubuntu setups come with Git **already installed**. Before installing
+anything, check the version:
 
 ```bash
 git --version
 ```
 
-You should see a version number, for example:
+- ✅ If you see a version number (for example `git version 2.43.0`), Git is already
+  installed — **skip the install step below** and jump straight to
+  [Introduce yourself](#introduce-yourself).
+- ❌ If you instead see `command not found` (or a similar error), continue to the
+  install step below.
 
-```text
-git version 2.43.0
+### Install Git (only if the check above failed)
+
+On **WSL / Ubuntu / Debian**, install it with:
+
+```bash
+sudo apt update && sudo apt install git -y
 ```
+
+> 💡 If asked for your password, type your Linux login password (nothing appears as
+> you type).
+>
+> *(On Windows outside WSL, download the installer from
+> [git-scm.com/downloads](https://git-scm.com/downloads) instead. On macOS, run
+> `brew install git`.)*
+
+Then confirm it installed correctly by running `git --version` again — you should
+now see a version number.
 
 ### Introduce yourself
 
