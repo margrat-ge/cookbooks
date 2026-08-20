@@ -52,6 +52,23 @@ claude --dangerously-skip-permissions
 This keeps Claude moving without interruption, which is great when you want it
 to power through a task end-to-end.
 
+### Switching modes while Claude is running
+
+You don't have to restart Claude to change modes. Press **`Shift + Tab`** to cycle
+between the permission modes. The current mode is shown in the **bottom-left corner
+of the input box** — keep pressing `Shift + Tab` until you see the one you want:
+
+- **`>> auto-accept edits on`** — Claude applies file edits without asking, but
+  still confirms before running commands.
+- **`>> plan mode on`** — Claude explores and proposes a plan without making any
+  changes (see [Section 6](#6-use-planning-mode-for-complex-requests)).
+- **`>> bypass permissions on`** — this is **YOLO mode**: Claude runs commands and
+  edits files without asking. (Same behavior as launching with
+  `--dangerously-skip-permissions`.)
+
+> 💡 Watch the bottom-left indicator to know which mode you're in before you send a
+> prompt. When it shows `>> bypass permissions on`, the same cautions below apply.
+
 > 💡 **A git repo is an ideal place for YOLO mode.** Since Git tracks every
 > change, you can easily review exactly what Claude did with `git diff`, and
 > undo anything you don't want with `git restore` / `git checkout`. That safety
