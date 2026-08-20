@@ -156,9 +156,68 @@ git clone https://github.com/collaborator-username/their-repo.git
 # Password: paste-your-token-here   (NOT your account password)
 ```
 
-💡 **Tip:** To avoid pasting the token every time, install the
-[Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager),
-which securely remembers it for you.
+### Save your credentials (so you don't type them every time)
+
+By default Git asks for your username and token on **every** clone, push, and
+pull. A **credential helper** remembers them for you after the first time, so you
+authenticate once and Git handles the rest.
+
+> 🔑 Wherever these steps ask for a "password", paste your **Personal Access
+> Token** from above — never your account password.
+
+**The simplest option: the built-in `gh` login.** If you plan to install the
+GitHub CLI (Section 7), `gh auth login` sets all of this up for you automatically
+— no extra steps needed. Skip ahead to Section 7 if you'd rather do it that way.
+
+**Otherwise, turn on Git's own credential storage.** Pick one of these:
+
+#### Option A — Store permanently (easiest)
+
+Saves your token to a file in your home folder so you never have to type it again:
+
+```bash
+git config --global credential.helper store
+```
+
+The **next** time Git prompts you for your username and token (on your next push
+or pull), it saves them and won't ask again.
+
+> ⚠️ **Note:** This writes the token in **plain text** to `~/.git-credentials`.
+> That's fine on your own personal machine, but avoid it on shared or public
+> computers. For stronger security, use Option B or the Git Credential Manager
+> below.
+
+#### Option B — Remember temporarily (more secure)
+
+Keeps your token in memory for a set time (here, 1 hour = 3600 seconds), then
+forgets it:
+
+```bash
+git config --global credential.helper 'cache --timeout=3600'
+```
+
+Nothing is written to disk — good for shared machines. You'll re-enter the token
+once per session.
+
+### ✅ Check for success
+
+After setting a helper, do one push or pull and enter your username + token when
+prompted. Then run another Git command that talks to GitHub (e.g. `git pull`):
+
+- With **Option A**, it should **not** ask again — ever.
+- With **Option B**, it won't ask again until the timeout expires.
+
+You can also confirm which helper is active:
+
+```bash
+git config --global credential.helper
+```
+
+> 💡 **Even more secure:** the
+> [Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager)
+> stores credentials in your operating system's secure vault instead of a plain
+> file. It's the most robust option, but the choices above are enough to stop the
+> repeated prompts.
 
 ---
 
